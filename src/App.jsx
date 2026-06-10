@@ -1,163 +1,272 @@
-import { useState } from "react";
+```jsx
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, ArrowLeft } from "lucide-react";
 
-const whatsappNumber = "971506309005";
-const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hi%20Waseem,%20I%20want%20to%20discuss%20a%20marketing%20opportunity`;
+export default function Portfolio() {
+  const whatsappNumber = "971506309005";
+  const whatsappLink = `https://wa.me/${whatsappNumber}`;
 
-const highlights = [
-  { label: "Experience", value: "3+ Years UAE Market" },
-  { label: "Specialization", value: "Performance Marketing & Meta Ads" },
-  { label: "Industries", value: "Real Estate • Banking • Automotive" }
-];
+  const globalPlatforms = ["Meta Ads", "Facebook", "Instagram", "TikTok"];
 
-const clients = [
-  "DAMAC Properties",
-  "Danube Properties",
-  "Reportage Properties",
-  "Emirates NBD",
-  "RAK Bank",
-  "Luxury Car Rental Brands"
-];
+  const globalResults =
+    "Managed and optimized Meta and TikTok advertising campaigns for leading UAE real estate developers including DAMAC, Binghatti, Imtiaz and Danube. Focused on lead generation, audience targeting, creative testing and campaign optimization.";
 
-const caseStudies = [
-  {
-    id: "damac-lagoons",
-    title: "DAMAC Lagoons",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
-    industry: "Real Estate",
-    problem: "High competition in Dubai luxury property leads.",
-    strategy: "Meta Ads funnel + premium creatives + investor targeting.",
-    result: "Consistent qualified investor leads.",
-    impact: "Positioned as premium waterfront lifestyle community.",
-    metric: "High CTR • Strong Lead Quality"
-  },
-  {
-    id: "danube-bay",
-    title: "Danube Bay 102",
-    image: "https://images.unsplash.com/photo-1560185007-c5ca9d2c014d",
-    industry: "Real Estate",
-    problem: "Low conversion from traffic to inquiries.",
-    strategy: "Landing page optimization + retargeting system.",
-    result: "Improved conversion rate significantly.",
-    impact: "Higher buyer intent pipeline.",
-    metric: "Reduced CPL • Higher CTR"
-  },
-  {
-    id: "emirates-nbd",
-    title: "Emirates NBD Credit Cards",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f",
-    industry: "Banking",
-    problem: "Need for compliant scalable acquisition.",
-    strategy: "Compliance-safe Meta Ads + structured funnel.",
-    result: "High volume credit card applications.",
-    impact: "Stable banking acquisition flow.",
-    metric: "Consistent Monthly Leads"
-  },
-  {
-    id: "car-rental",
-    title: "Luxury Car Rental Campaigns",
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70",
-    industry: "Automotive",
-    problem: "Low booking conversions from social media.",
-    strategy: "Reels marketing + retargeting + high intent ads.",
-    result: "Increased booking inquiries.",
-    impact: "Stronger ROI from paid ads.",
-    metric: "Improved Conversion Rate"
-  }
-];
+  const globalAchievements = [
+    "Generated qualified property leads through Meta and TikTok advertising",
+    "Worked on campaigns for DAMAC, Binghatti, Imtiaz and Danube Properties",
+    "Optimized campaign performance through audience and creative testing",
+    "Built expertise in luxury, off-plan and investment-focused real estate marketing"
+  ];
 
-export default function AppleStylePortfolio() {
-  const [selected, setSelected] = useState(null);
+  const projects = [
+    {
+      id: 1,
+      slug: "damac-campaigns",
+      title: "DAMAC Luxury Property Campaigns",
+      description:
+        "Lead generation campaigns for luxury waterfront and off-plan developments.",
+      platforms: ["Meta Ads", "Facebook", "Instagram", "TikTok"],
+      details:
+        "Managed Meta and TikTok advertising campaigns promoting luxury developments. Focused on audience targeting, lead generation and creative optimization.",
+      results:
+        "Reduced cost per lead while increasing lead quality through continuous testing and optimization.",
+      achievements:
+        "Generated high-intent property inquiries from local and international buyers.",
+      images: [
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
+        "https://images.unsplash.com/photo-1600566753151-384129cf4e3e"
+      ]
+    },
+
+    {
+      id: 2,
+      slug: "binghatti-campaigns",
+      title: "Binghatti Developers Campaigns",
+      description:
+        "Digital advertising campaigns for premium residential developments.",
+      platforms: ["Meta Ads", "Instagram", "TikTok"],
+      details:
+        "Executed performance marketing campaigns focused on investor acquisition and property lead generation.",
+      results:
+        "Improved engagement rates and generated qualified investor leads.",
+      achievements:
+        "Increased project visibility and strengthened online presence.",
+      images: [
+        "https://images.unsplash.com/photo-1460317442991-0ec209397118",
+        "https://images.unsplash.com/photo-1494526585095-c41746248156",
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"
+      ]
+    },
+
+    {
+      id: 3,
+      slug: "imtiaz-campaigns",
+      title: "Imtiaz Developments Marketing",
+      description:
+        "Luxury real estate campaigns focused on lifestyle and investment opportunities.",
+      platforms: ["Meta Ads", "Facebook", "Instagram"],
+      details:
+        "Developed targeted advertising campaigns highlighting modern living, amenities and investment value.",
+      results:
+        "Increased engagement and generated quality buyer inquiries.",
+      achievements:
+        "Enhanced brand awareness among investors and end-users.",
+      images: [
+        "https://images.unsplash.com/photo-1484154218962-a197022b5858",
+        "https://images.unsplash.com/photo-1501183638710-841dd1904471",
+        "https://images.unsplash.com/photo-1493809842364-78817add7ffb"
+      ]
+    },
+
+    {
+      id: 4,
+      slug: "danube-properties",
+      title: "Danube Properties Campaigns",
+      description:
+        "Performance marketing campaigns for off-plan residential projects.",
+      platforms: ["Meta Ads", "Instagram", "TikTok"],
+      details:
+        "Created and optimized advertising campaigns targeting investors and first-time buyers.",
+      results:
+        "Increased lead volume while maintaining strong lead quality.",
+      achievements:
+        "Successfully promoted multiple off-plan launches across Dubai.",
+      images: [
+        "https://images.unsplash.com/photo-1560518883-ce09059eeffa",
+        "https://images.unsplash.com/photo-1570129477492-45c003edd2be",
+        "https://images.unsplash.com/photo-1582407947304-fd86f028f716"
+      ]
+    }
+  ];
+
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash) {
+      const found = projects.find((p) => p.slug === hash);
+      if (found) setSelectedProject(found);
+    }
+  }, []);
+
+  const openProject = (project) => {
+    setSelectedProject(project);
+    window.location.hash = project.slug;
+  };
+
+  const goBack = () => {
+    setSelectedProject(null);
+    window.location.hash = "";
+  };
 
   return (
-    <div className="bg-white text-black min-h-screen font-sans">
+    <div className="bg-black text-white min-h-screen font-sans scroll-smooth">
+      <div className="fixed top-0 w-full flex justify-between items-center px-6 py-4 backdrop-blur-md bg-black/40 z-50">
+        <h1 className="text-lg font-semibold">Waseem Aftab</h1>
+      </div>
 
-      <a href={whatsappLink} target="_blank" className="fixed bottom-6 right-6 bg-green-500 text-black p-4 rounded-full shadow-xl z-50">
-        <MessageCircle />
-      </a>
+      <AnimatePresence mode="wait">
+        {selectedProject ? (
+          <motion.div
+            key="detail"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            className="min-h-screen px-10 py-24 max-w-5xl mx-auto"
+          >
+            <button
+              onClick={goBack}
+              className="mb-8 flex items-center gap-2 opacity-80"
+            >
+              <ArrowLeft size={18} />
+              Back
+            </button>
 
-      <section className="flex flex-col items-center justify-center text-center px-6 py-32 bg-gradient-to-b from-white to-gray-100">
-        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-5xl md:text-7xl font-semibold tracking-tight">
-          Waseem Aftab
-        </motion.h1>
-        <p className="text-sm text-gray-600">+971 506 309 005 • Waseem.aftab18@gmail.com</p>
+            <h1 className="text-4xl font-bold mb-4">
+              {selectedProject.title}
+            </h1>
 
-        <p className="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl">
-          I help UAE real estate, banking, and automotive brands generate high-quality leads through Meta Ads and conversion systems.
-        </p>
-
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
-          {highlights.map((h, i) => (
-            <div key={i} className="text-sm text-gray-700 border px-4 py-2 rounded-full bg-white shadow-sm">
-              <b>{h.label}:</b> {h.value}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {selectedProject.platforms.map((p) => (
+                <span
+                  key={p}
+                  className="px-3 py-1 text-xs rounded-full bg-white/10"
+                >
+                  {p}
+                </span>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
 
-      <section className="py-16 text-center">
-        <p className="text-gray-500 text-sm mb-6">Trusted exposure across UAE brands</p>
-        <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-700">
-          {clients.map((c, i) => (
-            <span key={i} className="px-3 py-1 border rounded-full bg-gray-50">{c}</span>
-          ))}
-        </div>
-      </section>
+            <p className="opacity-80 mb-6">{selectedProject.details}</p>
 
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12">Case Studies</h2>
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold mb-2">Results & Impact</h3>
+              <p className="opacity-80">{selectedProject.results}</p>
+            </div>
 
-        <div className="space-y-10">
-          {caseStudies.map((c) => (
-            <motion.div key={c.id} whileHover={{ scale: 1.01 }} onClick={() => setSelected(c)} className="cursor-pointer rounded-3xl overflow-hidden shadow-lg border bg-white">
-              <div className="grid md:grid-cols-2">
-                <img src={c.image} className="h-72 w-full object-cover" />
+            <div className="mb-10">
+              <h3 className="text-xl font-semibold mb-2">Achievements</h3>
+              <p className="opacity-80">{selectedProject.achievements}</p>
+            </div>
 
-                <div className="p-10 flex flex-col justify-center">
-                  <p className="text-sm text-gray-500">{c.industry}</p>
-                  <h3 className="text-2xl font-semibold mt-2">{c.title}</h3>
-                  <p className="text-gray-600 mt-4 text-sm">{c.metric}</p>
-                  <p className="text-blue-600 mt-6 text-sm font-medium">View Case Study →</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      <AnimatePresence>
-        {selected && (
-          <motion.div className="fixed inset-0 bg-black/70 flex items-center justify-center p-6 z-50" onClick={() => setSelected(null)}>
-            <motion.div className="bg-white max-w-2xl w-full p-8 rounded-3xl" onClick={(e) => e.stopPropagation()}>
-              <h2 className="text-2xl font-semibold">{selected.title}</h2>
-              <p className="text-gray-500 mt-1">{selected.industry}</p>
-
-              <div className="mt-6 space-y-3 text-sm text-gray-700">
-                <p><b>Problem:</b> {selected.problem}</p>
-                <p><b>Strategy:</b> {selected.strategy}</p>
-                <p><b>Result:</b> {selected.result}</p>
-                <p><b>Impact:</b> {selected.impact}</p>
-                <p className="text-green-600 font-semibold">{selected.metric}</p>
-              </div>
-
-              <button onClick={() => setSelected(null)} className="mt-8 bg-black text-white px-6 py-3 rounded-full">
-                Close
-              </button>
-            </motion.div>
+            <div className="grid md:grid-cols-3 gap-4">
+              {selectedProject.images.map((img, i) => (
+                <motion.img
+                  key={i}
+                  src={img}
+                  whileHover={{ scale: 1.05 }}
+                  className="rounded-xl h-48 w-full object-cover"
+                />
+              ))}
+            </div>
           </motion.div>
+        ) : (
+          <div>
+            <section className="h-screen flex flex-col justify-center items-center text-center px-6">
+              <motion.h1 className="text-5xl md:text-7xl font-bold">
+                Waseem Aftab
+              </motion.h1>
+
+              <p className="mt-4 text-lg opacity-70">
+                Real Estate Digital Marketing • Meta Ads • TikTok Ads • Lead
+                Generation
+              </p>
+
+              <div className="flex flex-wrap gap-2 mt-6 justify-center">
+                {globalPlatforms.map((p) => (
+                  <span
+                    key={p}
+                    className="px-3 py-1 text-xs rounded-full bg-white/10"
+                  >
+                    {p}
+                  </span>
+                ))}
+              </div>
+            </section>
+
+            <section className="px-10 py-20 text-center">
+              <h2 className="text-3xl font-semibold mb-4">
+                Results and Impact
+              </h2>
+              <p className="opacity-80 max-w-3xl mx-auto">
+                {globalResults}
+              </p>
+            </section>
+
+            <section className="px-10 py-20 bg-white text-black">
+              <h2 className="text-3xl font-semibold mb-8 text-center">
+                Achievements
+              </h2>
+
+              <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+                {globalAchievements.map((a, i) => (
+                  <div key={i} className="p-4 border rounded-xl">
+                    {a}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className="min-h-screen px-10 py-24">
+              <h2 className="text-3xl font-semibold mb-10">
+                Real Estate Case Studies
+              </h2>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                {projects.map((p) => (
+                  <motion.div
+                    key={p.id}
+                    whileHover={{ y: -5 }}
+                    onClick={() => openProject(p)}
+                    className="cursor-pointer p-6 bg-gray-900 rounded-2xl border border-gray-800"
+                  >
+                    <h3 className="text-xl font-semibold">{p.title}</h3>
+
+                    <p className="text-sm opacity-70 mt-2">
+                      {p.description}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </section>
+
+            <section className="min-h-screen flex items-center justify-center">
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-green-500 px-6 py-3 rounded-full text-black font-semibold"
+              >
+                <MessageCircle className="inline mr-2" />
+                WhatsApp
+              </a>
+            </section>
+          </div>
         )}
       </AnimatePresence>
-
-      <section className="text-center py-28 bg-gray-50">
-        <h2 className="text-3xl md:text-4xl font-semibold">Let’s Build Your Next Campaign</h2>
-        <p className="text-gray-500 mt-3">Available for marketing roles in Dubai / UAE</p>
-
-        <a href={whatsappLink} className="mt-10 inline-block bg-black text-white px-8 py-3 rounded-full">
-          Contact on WhatsApp
-        </a>
-      </section>
-
     </div>
   );
 }
+```
