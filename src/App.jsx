@@ -1,4 +1,3 @@
-```jsx
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, ArrowLeft } from "lucide-react";
@@ -269,4 +268,3 @@ export default function Portfolio() {
     </div>
   );
 }
-```
